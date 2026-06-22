@@ -26,5 +26,6 @@ find content -name '.ipynb_checkpoints' -type d -prune -exec rm -rf {} +
 # Replace JupyterLite's default root page with our custom landing page
 # (CTAs for Lite/Binder/Colab + a generated listing of every notebook).
 "$PYTHON" gen_index.py
+cp site/favicon.svg _output/favicon.svg
 
 echo "Built site at: $HERE/_output  (open _output/index.html via a local server)"
