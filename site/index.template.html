@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>practices — interview-prep notebooks, runnable in your browser</title>
 <meta name="description" content="Interview-prep notebooks you can run in the browser via JupyterLite, Binder, or Colab.">
+<!--
+  Inert config marker that JupyterLite's apps read when they walk up to the site
+  root to resolve the "lite root". Without it, opening /lab/, /repl/, etc. dies
+  with "getPageConfig ... Cannot read properties of null (reading 'textContent')".
+  Injected at build time by gen_index.py from JupyterLite's own root index.html.
+  Note: we deliberately do NOT include JupyterLite's config-utils.js import here,
+  so this landing page renders instead of redirecting into the app.
+-->
+<!--JUPYTER_CONFIG-->
 <style>
   :root {
     --fg: #1c2330; --muted: #5b6678; --line: #e6e9ef; --bg: #ffffff;

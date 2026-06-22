@@ -78,14 +78,39 @@ def track_section(track_dir, title, blurb, runtime):
             f'</section>')
 
 
+FALLBACK_CONFIG = (
+    '<script id="jupyter-config-data" type="application/json" '
+    'data-jupyter-lite-root=".">{}</script>'
+)
+
+
+def lite_root_config_block():
+    """Extract the `jupyter-config-data` <script> from JupyterLite's own root
+    index (which we are about to overwrite). JupyterLite's apps fetch this page
+    when resolving the lite root, so our landing page must carry the same block
+    or `/lab/` etc. fail to launch with a `textContent of null` error.
+    """
+    try:
+        existing = open(OUT).read()
+    except FileNotFoundError:
+        return FALLBACK_CONFIG
+    m = re.search(r'<script[^>]*id="jupyter-config-data".*?</script>', existing, re.S)
+    return m.group(0) if m else FALLBACK_CONFIG
+
+
 def main():
+    config_block = lite_root_config_block()  # read before we overwrite OUT
     sections = "\n".join(track_section(*t) for t in TRACKS)
     total = sum(len(glob.glob(f"{t[0]}/*.ipynb")) for t in TRACKS)
     summary = html.escape(f"{total} notebooks across {len(TRACKS)} tracks.")
-    page = open(TEMPLATE).read().replace("<!--SUMMARY-->", summary).replace("<!--TRACKS-->", sections)
+    page = (open(TEMPLATE).read()
+            .replace("<!--JUPYTER_CONFIG-->", config_block)
+            .replace("<!--SUMMARY-->", summary)
+            .replace("<!--TRACKS-->", sections))
     with open(OUT, "w") as f:
         f.write(page)
-    print(f"Wrote {OUT} ({total} notebooks listed)")
+    print(f"Wrote {OUT} ({total} notebooks listed); lite-root config "
+          f"{'preserved' if config_block != FALLBACK_CONFIG else 'FALLBACK used'}")
 
 
 if __name__ == "__main__":
