@@ -1,5 +1,22 @@
 # Modern Coding Practice
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/samanamp/practices/main?urlpath=lab/tree/modern-coding)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/samanamp/practices)
+
+> **Run these in the cloud — not on the JupyterLite site.** These drills use real
+> threads (`ThreadPoolExecutor`) and processes (`ProcessPoolExecutor`), which the
+> browser-only JupyterLite (Pyodide) runtime can't provide. Use the buttons above:
+>
+> - **Binder** (recommended): clones the whole repo, so threads, processes, **and**
+>   the sibling `*_workers.py` imports all work with zero setup. First launch builds
+>   the image (~1–3 min); later launches are fast.
+> - **Colab**: opens only the single notebook, so the `*_workers.py` modules and
+>   `ProcessPoolExecutor` steps won't work until you pull the repo. Run this once in
+>   a cell at the top:
+>   ```python
+>   !git clone https://github.com/samanamp/practices && cp practices/modern-coding/*_workers.py .
+>   ```
+
 Practice for **Amazon FAR**-style first-round coding interviews: one problem domain that the
 interviewer keeps piling constraints onto, almost always ending in a concurrency/parallelism
 component. The goal is to rehearse *building a solution that survives added constraints* — not

@@ -1,0 +1,10 @@
+# Binder environment for the modern-coding concurrency drills.
+#
+# This file exists mainly to OVERRIDE the repo-root requirements.txt (which holds
+# the JupyterLite *build* tooling and has no business running on Binder).
+#
+# The modern-coding notebooks import only the Python standard library
+# (threading, concurrent.futures, queue, collections, hashlib, ...) plus their
+# sibling *_workers.py modules — so there are no third-party packages to install.
+# Binder's base image already provides JupyterLab and CPython with real OS
+# threads and processes, which is the whole point of running this track here.

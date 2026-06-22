@@ -9,11 +9,18 @@ startup, so you don't need a `%pip install` cell to use them.
 
 ## Contents
 
-| Folder | What | Browser fit |
+| Folder | What | Where to run it |
 | --- | --- | --- |
-| `ml-coding/` | NumPy tensor / vectorization drills | ✅ Great |
-| `paper-math/` | Intuition-first math notebooks | ✅ Great |
-| `modern-coding/` | Concurrency / systems coding drills | ⚠️ Partial — see caveats |
+| `ml-coding/` | NumPy tensor / vectorization drills | ✅ This JupyterLite site |
+| `paper-math/` | Intuition-first math notebooks | ✅ This JupyterLite site |
+| `modern-coding/` | Concurrency / systems coding drills | ▶️ [Binder / Colab](modern-coding/README.md) — needs real threads |
+
+`modern-coding` uses `ThreadPoolExecutor`/`ProcessPoolExecutor`, which the
+browser-only Pyodide runtime can't provide (no OS threads). Run that track on
+**Binder** (recommended — clones the repo so threads, processes, and the sibling
+`*_workers.py` imports all work) via the badge in
+[`modern-coding/README.md`](modern-coding/README.md). The other two tracks are a
+perfect fit for JupyterLite and run right here in the browser.
 
 ## Use it
 
@@ -49,14 +56,11 @@ The site URL appears in the workflow's `deploy` job summary.
 
 ## Caveats (the Pyodide runtime is not full CPython)
 
-- **`modern-coding/` concurrency notebooks may not run fully.** Pyodide has no
-  real OS threads, so `threading`/`concurrent.futures`-based exercises behave
-  differently or stall. The data-structure ones (trie, bloom filter, union-find,
-  count-min sketch, …) are fine.
-- **Sibling `*_workers.py` imports.** 30 of the `modern-coding` notebooks
-  `import <name>_workers`. Whether a local module next to the notebook is
-  importable depends on the Pyodide kernel's working directory — verify per
-  notebook; if it fails, the worker code can be pasted inline.
+- **`modern-coding/` doesn't run here — use Binder.** Pyodide has no real OS
+  threads, so `ThreadPoolExecutor`/`ProcessPoolExecutor` exercises can't work in
+  the browser. That track runs on Binder instead; see
+  [`modern-coding/README.md`](modern-coding/README.md). The `ml-coding` and
+  `paper-math` tracks run fine right here.
 - **Packages must have a Pyodide/WASM build.** numpy/pandas/matplotlib/scipy/
   scikit-learn all do. Anything needing native threads or a GPU (PyTorch,
   TensorFlow) does not — use Colab for those.
