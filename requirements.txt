@@ -1,0 +1,5 @@
+# Build-time dependencies for the JupyterLite site.
+# These run on the machine that BUILDS the static site (CI), not in the browser.
+jupyterlite-core>=0.7,<0.8
+jupyterlite-pyodide-kernel>=0.7,<0.8
+jupyterlab>=4.2,<5
