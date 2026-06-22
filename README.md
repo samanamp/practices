@@ -61,14 +61,21 @@ python -m venv .venv && source .venv/bin/activate   # if you don't already have 
 pip install -r requirements.txt
 ./build.sh                       # writes the static site to _output/
 python -m http.server -d _output 8000
-# open http://localhost:8000/lab/index.html
+# open http://localhost:8000/  (custom landing page; JupyterLite itself is at /lab/)
 ```
 
-`build.sh` stages the three notebook folders under a temporary `content/`
-directory before building — JupyterLite flattens the *contents* of each folder
-it's given, so the wrapper is what preserves the three folder names (and avoids
-collisions between the identically-named `dayNN` notebooks in `ml-coding` and
-`paper-math`).
+`build.sh` does two notable things:
+
+- **Stages** the three notebook folders under a temporary `content/` directory
+  before building — JupyterLite flattens the *contents* of each folder it's
+  given, so the wrapper preserves the three folder names (and avoids collisions
+  between the identically-named `dayNN` notebooks in `ml-coding` and
+  `paper-math`).
+- Runs **`gen_index.py`** after the build to replace JupyterLite's default root
+  page with `site/index.template.html` — the custom landing page with
+  Lite/Binder/Colab buttons and a listing of every notebook, generated from the
+  folders so it never goes stale. Edit the look in the template; the per-notebook
+  rows are generated.
 
 ## Deploy (GitHub Pages)
 
@@ -78,6 +85,12 @@ collisions between the identically-named `dayNN` notebooks in `ml-coding` and
 **Repo → Settings → Pages → Build and deployment → Source: GitHub Actions.**
 
 The site URL appears in the workflow's `deploy` job summary.
+
+**Custom domain (CNAME):** with Actions-based Pages, set the domain under
+**Settings → Pages → Custom domain** and add the DNS record at your registrar —
+it persists across deploys (no `CNAME` file in the artifact needed). The landing
+page and all in-app links are relative, so the site works unchanged whether
+it's served from `…github.io/practices/` or the root of your own domain.
 
 ## Caveats (the Pyodide runtime is not full CPython)
 
