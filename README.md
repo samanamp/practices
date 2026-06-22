@@ -7,6 +7,38 @@ WebAssembly (Pyodide). No server, no install — open the URL and run cells.
 **`numpy`, `pandas`, and `matplotlib` are preloaded into every kernel** at
 startup, so you don't need a `%pip install` cell to use them.
 
+## Run it
+
+Everything runs in the cloud — no local install. Pick by track:
+
+### `ml-coding` + `paper-math` → JupyterLite (in-browser)
+
+**▶️ https://samanamp.github.io/practices/lab/index.html**
+
+Runs entirely in the browser via WebAssembly (Pyodide) — no server, no install,
+works on a phone or a borrowed laptop. `numpy`, `pandas`, and `matplotlib` are
+preloaded into every kernel. The file browser on the left shows all three
+folders; double-click any `.ipynb` and run it. Edits are saved in the browser's
+local storage — use **File → Download** to export a changed notebook back out.
+
+### `modern-coding` → Binder / Colab (real threads)
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/samanamp/practices/main?urlpath=lab/tree/modern-coding)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/samanamp/practices)
+
+These drills use real threads (`ThreadPoolExecutor`) and processes
+(`ProcessPoolExecutor`), which the browser-only Pyodide runtime can't provide.
+
+- **Binder** (recommended): clones the whole repo, so threads, processes, **and**
+  the sibling `*_workers.py` imports all work with zero setup. First launch builds
+  the image (~1–3 min); later launches are fast.
+- **Colab**: opens only the single notebook, so the `*_workers.py` modules and
+  `ProcessPoolExecutor` steps won't work until you pull the repo. Run this once in
+  a cell at the top:
+  ```python
+  !git clone https://github.com/samanamp/practices && cp practices/modern-coding/*_workers.py .
+  ```
+
 ## Contents
 
 | Folder | What | Where to run it |
@@ -21,13 +53,6 @@ browser-only Pyodide runtime can't provide (no OS threads). Run that track on
 `*_workers.py` imports all work) via the badge in
 [`modern-coding/README.md`](modern-coding/README.md). The other two tracks are a
 perfect fit for JupyterLite and run right here in the browser.
-
-## Use it
-
-Once deployed (see below), open the Pages URL. The file browser on the left
-shows `ml-coding/`, `paper-math/`, and `modern-coding/`. Double-click any
-`.ipynb` and run it. Your edits are saved in the browser's local storage; use
-**File → Download** to export a changed notebook back out.
 
 ## Build / preview locally
 
