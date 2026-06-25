@@ -42,31 +42,31 @@ watching whether you:
 | `04_lru_ttl_cache_practice.ipynb` | Caching | LRU → TTL expiry → thread-safe access → cache-stampede / single-flight → sharded cache + parallel warmup |
 | `05_chunked_transfer_practice.ipynb` | Chunked file transfer | split/reassemble → checksums + manifest → concurrent send/recv → unreliable channel (drop/reorder/dup/corrupt) → parallel multi-file verify |
 | `06_itinerary_reconstruction_practice.ipynb` | Boarding-pass itinerary | reconstruct chain → uniqueness check → concurrent multi-chest ingest → Eulerian reconstruction (repeated tickets) → reconstruct many chests in parallel |
-| `07_pubsub_practice.ipynb` | Pub/sub broker | topic fan-out → wildcard matching → concurrent broker (queues) → at-least-once ack/redeliver/dedup → sharded broker + parallel aggregation |
-| `08_crawler_practice.ipynb` | Concurrent web crawler | extract links → BFS crawl → concurrent crawl (frontier + termination) → robust crawl (dead links/depth) → parallel fetch/parse |
-| `09_threadpool_practice.ipynb` | Parallel task runner | Future → sequential runner → worker-pool parallel runner → retries/fail-fast → process pool |
-| `10_connection_pool_practice.ipynb` | Connection pool | basic pool → validate-on-acquire → thread-safe blocking pool → timeouts/eviction/double-release → sharded pools + parallel warmup |
-| `11_kvstore_wal_practice.ipynb` | KV store + write-ahead log | get/put/delete → replay log → thread-safe store (atomic incr) → crash recovery (torn log) → sharded store + parallel compaction |
-| `12_dag_scheduler_practice.ipynb` | DAG task scheduler | ready tasks → topological order → concurrent execution (deps + termination) → failure propagation → parallel cost precompute |
-| `13_ledger_practice.ipynb` | Account ledger | transfers → replay log → concurrent transfers (deadlock-free lock ordering) → idempotent atomic batches → sharded ledger + parallel replay |
-| `14_pipeline_practice.ipynb` | Streaming pipeline | one stage → compose stages → concurrent pipeline (bounded queues/backpressure) → error routing → parallel CPU stage |
-| `15_circuit_breaker_practice.ipynb` | Retry + circuit breaker | retry/backoff → breaker state machine → thread-safe breaker → guarded calls → per-endpoint registry + parallel replay |
-| `16_consistent_hashing_practice.ipynb` | Consistent hashing ring | build ring + lookup → minimal-movement rebalance → thread-safe ring → replication → parallel assignment |
-| `17_dedup_practice.ipynb` | Exactly-once / dedup | basic deduper → TTL deduper → thread-safe (exactly-once) → bounded-memory LRU deduper → sharded parallel distinct count |
-| `18_heavy_hitters_practice.ipynb` | Top-K heavy hitters | count → top-k → concurrent counter → Misra–Gries approximate → parallel map-reduce top-k |
-| `19_filesystem_practice.ipynb` | In-memory filesystem | core ops → recursive rm/find → thread-safe FS → atomic move + errors → parallel disk-usage |
-| `20_bloom_filter_practice.ipynb` | Bloom filter | add/contains → optimal sizing → thread-safe → counting (deletable) → parallel build + union |
-| `21_merkle_tree_practice.ipynb` | Merkle tree | root → full tree + diff → concurrent leaf hashing → inclusion proofs → parallel leaf hashing |
-| `22_crdt_counter_practice.ipynb` | CRDT G-Counter | counter → merge (per-replica max) → concurrent increments → merge many replicas → parallel merge-reduce |
-| `23_order_book_practice.ipynb` | Order book / matching | resting book → price-time matching → thread-safe book → cancel + validation → parallel per-symbol replay |
-| `24_mvcc_store_practice.ipynb` | MVCC versioned store | versioned reads → snapshot view → concurrent MVCC → tombstone delete + GC → parallel point-in-time reads |
-| `25_trie_autocomplete_practice.ipynb` | Trie autocomplete | trie → top-k autocomplete → thread-safe trie → deletion → parallel frequency precompute |
-| `26_reservoir_sampling_practice.ipynb` | Reservoir sampling | Algorithm R → streaming reservoir → thread-safe → merge partitions → parallel sampling |
-| `27_union_find_practice.ipynb` | Union-Find (DSU) | find/union → components → thread-safe (RLock) → redundant-edge detect → parallel connectivity |
-| `28_lfu_cache_practice.ipynb` | LFU cache | LFU + LRU tie-break → compute-on-miss → thread-safe → frequency aging → parallel hit-rate sim |
-| `29_two_phase_commit_practice.ipynb` | Two-phase commit | coordinator/vote → recovery (in-doubt) → concurrent txns → failure handling → parallel decision replay |
-| `30_count_min_sketch_practice.ipynb` | Count-Min Sketch | add/estimate → sizing/error bound → thread-safe → merge (union) → parallel build |
-| `31_memory_allocator_practice.ipynb` | Memory allocator (malloc/free) | first-fit + coalesce → alignment/best-fit/stats → thread-safe → hostile-input streaming → parallel fragmentation sim |
+| `07_memory_allocator_practice.ipynb` | Memory allocator (malloc/free) | first-fit + coalesce → alignment/best-fit/stats → thread-safe → hostile-input streaming → parallel fragmentation sim |
+| `08_pubsub_practice.ipynb` | Pub/sub broker | topic fan-out → wildcard matching → concurrent broker (queues) → at-least-once ack/redeliver/dedup → sharded broker + parallel aggregation |
+| `09_crawler_practice.ipynb` | Concurrent web crawler | extract links → BFS crawl → concurrent crawl (frontier + termination) → robust crawl (dead links/depth) → parallel fetch/parse |
+| `10_threadpool_practice.ipynb` | Parallel task runner | Future → sequential runner → worker-pool parallel runner → retries/fail-fast → process pool |
+| `11_connection_pool_practice.ipynb` | Connection pool | basic pool → validate-on-acquire → thread-safe blocking pool → timeouts/eviction/double-release → sharded pools + parallel warmup |
+| `12_kvstore_wal_practice.ipynb` | KV store + write-ahead log | get/put/delete → replay log → thread-safe store (atomic incr) → crash recovery (torn log) → sharded store + parallel compaction |
+| `13_dag_scheduler_practice.ipynb` | DAG task scheduler | ready tasks → topological order → concurrent execution (deps + termination) → failure propagation → parallel cost precompute |
+| `14_ledger_practice.ipynb` | Account ledger | transfers → replay log → concurrent transfers (deadlock-free lock ordering) → idempotent atomic batches → sharded ledger + parallel replay |
+| `15_pipeline_practice.ipynb` | Streaming pipeline | one stage → compose stages → concurrent pipeline (bounded queues/backpressure) → error routing → parallel CPU stage |
+| `16_circuit_breaker_practice.ipynb` | Retry + circuit breaker | retry/backoff → breaker state machine → thread-safe breaker → guarded calls → per-endpoint registry + parallel replay |
+| `17_consistent_hashing_practice.ipynb` | Consistent hashing ring | build ring + lookup → minimal-movement rebalance → thread-safe ring → replication → parallel assignment |
+| `18_dedup_practice.ipynb` | Exactly-once / dedup | basic deduper → TTL deduper → thread-safe (exactly-once) → bounded-memory LRU deduper → sharded parallel distinct count |
+| `19_heavy_hitters_practice.ipynb` | Top-K heavy hitters | count → top-k → concurrent counter → Misra–Gries approximate → parallel map-reduce top-k |
+| `20_filesystem_practice.ipynb` | In-memory filesystem | core ops → recursive rm/find → thread-safe FS → atomic move + errors → parallel disk-usage |
+| `21_bloom_filter_practice.ipynb` | Bloom filter | add/contains → optimal sizing → thread-safe → counting (deletable) → parallel build + union |
+| `22_merkle_tree_practice.ipynb` | Merkle tree | root → full tree + diff → concurrent leaf hashing → inclusion proofs → parallel leaf hashing |
+| `23_crdt_counter_practice.ipynb` | CRDT G-Counter | counter → merge (per-replica max) → concurrent increments → merge many replicas → parallel merge-reduce |
+| `24_order_book_practice.ipynb` | Order book / matching | resting book → price-time matching → thread-safe book → cancel + validation → parallel per-symbol replay |
+| `25_mvcc_store_practice.ipynb` | MVCC versioned store | versioned reads → snapshot view → concurrent MVCC → tombstone delete + GC → parallel point-in-time reads |
+| `26_trie_autocomplete_practice.ipynb` | Trie autocomplete | trie → top-k autocomplete → thread-safe trie → deletion → parallel frequency precompute |
+| `27_reservoir_sampling_practice.ipynb` | Reservoir sampling | Algorithm R → streaming reservoir → thread-safe → merge partitions → parallel sampling |
+| `28_union_find_practice.ipynb` | Union-Find (DSU) | find/union → components → thread-safe (RLock) → redundant-edge detect → parallel connectivity |
+| `29_lfu_cache_practice.ipynb` | LFU cache | LFU + LRU tie-break → compute-on-miss → thread-safe → frequency aging → parallel hit-rate sim |
+| `30_two_phase_commit_practice.ipynb` | Two-phase commit | coordinator/vote → recovery (in-doubt) → concurrent txns → failure handling → parallel decision replay |
+| `31_count_min_sketch_practice.ipynb` | Count-Min Sketch | add/estimate → sizing/error bound → thread-safe → merge (union) → parallel build |
 
 Notebooks are numbered in suggested order; new problems continue the sequence (`09_…`). Worker
 modules stay **unprefixed** — a Python module name can't start with a digit — and keep their

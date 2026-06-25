@@ -37,7 +37,7 @@ Five parts, mirroring `morse_code_practice.ipynb`:
   file transfer, in-memory pub/sub, tokenizer/parser) — keep the multi-step + concurrency shape.
 - Confirm the domain with the user before writing a whole notebook if it's ambiguous.
 - **Naming:** notebooks are numbered `NN_<domain>_practice.ipynb` in suggested order; a new problem
-  takes the next number (currently up to `30_`, so next is `31_`). The worker module stays
+  takes the next number (currently up to `31_`, so next is `32_`). The worker module stays
   **unprefixed** as `<domain>_workers.py` (a module name can't start with a digit), and the notebook
   imports it by that bare name.
 - Update this folder's `README.md` problem table when a new notebook is added.
