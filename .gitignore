@@ -19,3 +19,6 @@ content/
 
 # macOS
 .DS_Store
+
+# Wrangler local state (Cloudflare Pages deploys)
+.wrangler/

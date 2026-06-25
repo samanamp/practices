@@ -66,6 +66,7 @@ watching whether you:
 | `28_lfu_cache_practice.ipynb` | LFU cache | LFU + LRU tie-break → compute-on-miss → thread-safe → frequency aging → parallel hit-rate sim |
 | `29_two_phase_commit_practice.ipynb` | Two-phase commit | coordinator/vote → recovery (in-doubt) → concurrent txns → failure handling → parallel decision replay |
 | `30_count_min_sketch_practice.ipynb` | Count-Min Sketch | add/estimate → sizing/error bound → thread-safe → merge (union) → parallel build |
+| `31_memory_allocator_practice.ipynb` | Memory allocator (malloc/free) | first-fit + coalesce → alignment/best-fit/stats → thread-safe → hostile-input streaming → parallel fragmentation sim |
 
 Notebooks are numbered in suggested order; new problems continue the sequence (`09_…`). Worker
 modules stay **unprefixed** — a Python module name can't start with a digit — and keep their
